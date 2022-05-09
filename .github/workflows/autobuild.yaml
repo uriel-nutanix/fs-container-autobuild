@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - "main"
+  # Build every day at 1 am
+  schedule:
+    - cron: "0 1 * * *"
 
 jobs:
   docker:
