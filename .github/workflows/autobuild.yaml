@@ -20,4 +20,4 @@ jobs:
         with:
           context: .github/workflows
           push: true
-          tags: latest
+          tags: local-fs:latest
