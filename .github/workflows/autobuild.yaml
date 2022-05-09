@@ -15,9 +15,16 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
+      - name: Log in to the Container registry
+        uses: docker/login-action
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
           context: .github/workflows
           push: true
-          tags: local-fs:latest
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
